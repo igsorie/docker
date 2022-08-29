@@ -66,7 +66,43 @@ Tipo de conexión entre contenedores y el resto del mundo. Hay 5 tipos de driver
 
 
 ## Almacenamiento<a name="id3"></a> 
+Se utilizan para persistir los datos de un contenedor, existen 3 tipos.
 
+1. Tipo Host
+
+Se mapeará  un directorio del docker host al directorio donde la operación guarda los datos en el contenedor.
+De este modo cualquier información que la aplicación guarde en el directorio del contenedor también se guardará en el docker host.
+
+Este volúmen no se borra con el comando: **docker rm -fv mi_contenedor**
+Creamos un directorio al cual querramos mapear.
+
+mkdir nginxconf
+
+Creamos un contenedor con ngix y copiamos /etc/ngix/engix.conf al directorio creado. -> Unicamente para tener el archivo de configuración de ngix a mano.
+
+-> Luego con el comando siguiente mapeamos el directorio al nuevo contenedor.
+
+docker run -d --name nginx-volume -v $pwd/nginx.conf/nginx.conf:/etc/ngix/nginx.conf nginx
+
+2. Volúmenes anomimos
+
+Este volúmen es creado y manejado por docker, la información se guarda en un directorio que crea docker en el docker root Dir con un nombre aleatorio
+
+Docker root dir: docker info | grep -i root
+
+-> Estos volúmenes no se recomiendan no son seguros ya que se puede perder la información.
+
+3. Volúmenes nombrados
+Este tipo de volúmen es una mezcla entre un volúmen de host y un volúmen anónimo, lo creamos con el comando docker volume create y se guarda en docker root dir
+
+-> Este tipo de volúmen no se borra
+
+Para crear volúmenes:
+
+docker run -d --name jenkins-vol-nombrado -p 8080:8080 -p 5000:5000 -v jenkins_home:/var/jenkins_home
+
+Vemos si se creo el volumen donde estan los directorios.
+ls -lrt/var/lib/docker/volumes
 
 ## Imagenes<a name="id4"></a> 
 
