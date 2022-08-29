@@ -8,7 +8,7 @@
 5. [Instalación](#id5)
 6. [Docker Compose](#id6)
 7. [Dockerfile](#id7)
-
+8. [Comandos](#id8)
 ## Introducción<a name="id1"></a> 
 
 Docker es un proyecto de código abierto que automatiza el despliegue de aplicaciones dentro de contenedores de software, proporciona una capa de abstraccción y automatización de virtualización de aplicaciones en múltiples sistemas operativos.
@@ -133,9 +133,41 @@ El comando ENV nos va a servir para crear variables de ambiente dentro de nuestr
 
 Ejemplo de Dockerfile
 
-FROM node:10.15-alpine
-WORKDIR /usr/src/app
-COPY ..
-RUN npm run build
-EXPOSE 3001
-CMD ["nmp", "start"]
+    #Buscamos la imagen de node version 10.15
+    FROM node:10.15-alpine
+
+    #Establecemos una carpeta de trabajo
+    WORKDIR /usr/src/app
+
+    #Copiamos todos los archivos
+    COPY ..
+
+    #Ejecutamos el comando de npm build
+    RUN npm run build
+
+    #Exponemos el puerto 3001
+    EXPOSE 3001
+
+    #Corremos nuestra imagen con el comando start
+    CMD ["nmp", "start"]
+
+## Comandos<a name="id8"></a> 
+### **docker ps**
+        El comando docker ps nos sirve para listar todos los contenedores que se estan corriendo actualmente
+
+        En el caso de ver los contenedores que ya terminaron o murieron en el pasado, podemos correr el comando docker ps -a
+
+### **docker build**
+
+        El comando docker build nos sirve para crear una imagen en base a un archivo Dockerfile
+
+### **docker images**
+
+        El comando docker images nos sirve para listar todas las imágenes que creamos.
+
+### **docker run**
+
+        El comando docker run nos sirve para crear un contenedor a partir de una imagen
+
+        Ej: docker run -p PUERTO_EXPOSE:SERVIDOR image_id
+        Ej: docker run -p 8080:8080 056534324ew43
