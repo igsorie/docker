@@ -134,7 +134,7 @@ services:
 ``` 
 Si queremos ejecutar el archivo levantando las imagenes es con la opción up -d al final.
 
-**docker compose -f  postgres.yml pull up -d**
+**docker compose -f  postgres.yml up -d**
 
 
 ## Dockerfile<a name="id7"></a>
