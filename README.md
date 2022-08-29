@@ -1,6 +1,5 @@
 # Docker
 
-![Docker](índice.png)
 1. [Introducción](#id1)
 2. [Red](#id2)
 3. [Almacenamiento](#id3)
@@ -12,6 +11,8 @@
 ## Introducción<a name="id1"></a> 
 
 Docker es un proyecto de código abierto que automatiza el despliegue de aplicaciones dentro de contenedores de software, proporciona una capa de abstraccción y automatización de virtualización de aplicaciones en múltiples sistemas operativos.
+
+![Docker](índice.png)
 
 **Contenedores:** 
 * Def1. Unidad de software que empaqueta el código y todas las dependencias necesarias de una aplicación
@@ -39,6 +40,15 @@ El ciclo de vida es temportal, de lectura y escritura. Cuando se elimina un cont
 **Docker Swarm:** Orquestador de contenedores que permite manejar un cluster.
 
 **Kubernetes:** Sistema para la administración de clusters y Orquestador Empresarial de contenedores.
+
+### <u>**Arquitectura y Componentes**</u>
+**DockerHost:** Es la máquina donde va a correr docker
+
+**DockerCLI:** Es el cliente con el que a través de comandos vamos a administrar docker
+
+**RetAPI:** Es una api para poder administrar docker mediante peticiones Get o Post porejemplo docker ps es Get/ container/JSON,ideal para Jenkins
+
+**Docker Daemon:** Es el demonio que presta el servicio de docker, "el servidor"
 
 ## Red<a name="id2"></a> 
 
@@ -94,7 +104,38 @@ Luego de instalado agregamos al los usuarios que querramos al grupo Docker con e
 ## Docker Compose<a name="id6"></a> 
 
 * Instalación
-apt-get install docker-compose-plugin
+apt-get install docker-compose-plugin="Distro"
+
+Ejemplo:
+``` 
+version: '3.1'
+
+services:
+
+  db:
+    container_name: postgres 
+    image: postgres
+    restart: always
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: qwerty
+      POSTGRES_DB: postgres
+
+  adminer:
+    container_name: adminer
+    image: adminer
+    restart: always
+    depends_on:
+      - db
+    ports:
+      - 9090:8080
+``` 
+Si queremos ejecutar el archivo levantando las imagenes es con la opción up -d al final.
+
+**docker compose -f  postgres.yml pull up -d**
+
 
 ## Dockerfile<a name="id7"></a>
 
@@ -171,3 +212,21 @@ Ejemplo de Dockerfile
 
         Ej: docker run -p PUERTO_EXPOSE:SERVIDOR image_id
         Ej: docker run -p 8080:8080 056534324ew43
+
+### <u>Otros comandos:</u>
+### **docker system prune**
+
+### **docker volume ls**
+
+### **docker volume prune**
+
+### **docker-compose up -d**
+
+### **docker-compose down**
+
+### **docker images rmi imagen**
+
+### **docker images -a**
+
+### **comando para ver información de tarjetas de red**
+docker inspect -f '{{range.NetworkSettings.Networks}} {{. IPAddress}} {{end}}' name_or_id
