@@ -301,3 +301,12 @@ COPY . /app
 
 CMD ["python", "main.py"]
 ``` 
+
+
+## Nombrar y taguear contenedores e imagenes
+
+        Para nombrar un contenedor lo hacemos con el flag --name, el siguiente comando reflejará el ejemplo 
+        mencionado anteriormente.
+        docker run -p 8080:80 -d --name goalapp 20d7b7e9d1bd
+
+        Cuando queremos asignar un nombre a una imagen, debemos asignarle un tag ya que el campo nombre propiamente dicho no existe, solo existe el campo TAG
