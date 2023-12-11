@@ -248,6 +248,7 @@ Ejemplo de Dockerfile
 
         Ej: docker run -p PUERTO_EXPOSE:SERVIDOR image_id
         Ej: docker run -p 8080:8080 056534324ew43
+        Ej: docker run -p 8080:8080 -d --rm 056534324ew43 --> Utilizamos el flag rm para eliminarlo una vez el contenedor se ha detenido.
 
 ### **docker start**
         Podemos iniciar un contenedor terminado con todos sus cambios anteriores intactos. Podemos ver que el contenedor está iniciado con el comando docker ps
@@ -261,7 +262,7 @@ Ejemplo de Dockerfile
 
 ### **docker container prune**
         Con este comando eliminamos todos los contenedores que están detenidos.
-        
+
 ### <u>Otros comandos:</u>
 ### **docker system prune**
 
