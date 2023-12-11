@@ -249,6 +249,14 @@ Ejemplo de Dockerfile
         Ej: docker run -p PUERTO_EXPOSE:SERVIDOR image_id
         Ej: docker run -p 8080:8080 056534324ew43
 
+### **docker start**
+        Podemos iniciar un contenedor terminado con todos sus cambios anteriores intactos. Podemos ver que el contenedor está iniciado con el comando docker ps
+        
+### **docker attach**       
+        Con docker attach nos podemos adjuntar al contenedor y todos los comandos recíbidos en el se van a motrar en pantalla.
+
+### **docker logs**  
+        Podemos ver los logs pasados del contenedor, con el flag -f vamos a posicionarnos en la terminal donde podemos ver logs futuros además de los pasados.
 ### <u>Otros comandos:</u>
 ### **docker system prune**
 
