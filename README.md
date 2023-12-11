@@ -275,3 +275,24 @@ Ejemplo de Dockerfile
 
 ### **comando para ver información de tarjetas de red**
 docker inspect -f '{{range.NetworkSettings.Networks}} {{. IPAddress}} {{end}}' name_or_id
+
+
+## Uso para aplicaciones pequeñas
+
+        Para utilizar docker con aplicacions pequeñas como por ejemplo la app3, vemos que podemos crear el archivo Dockerfile,
+        para luego instalar pyhton y enviar los archivos necesarios para ejecutar la aplicación.
+        Los comandos para ejecutar la aplicación son los siguientes:
+        docker run -it <image-id>
+        Una vez terminada la aplicación podemos ejecutarla nuevamente con: 
+        docker start -a -i <conteiner-id>
+
+Dockerfile:
+``` 
+FROM python
+
+WORKDIR /app
+
+COPY . /app
+
+CMD ["python", "main.py"]
+``` 
