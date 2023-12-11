@@ -258,6 +258,10 @@ Ejemplo de Dockerfile
 
 ### **docker logs**  
         Podemos ver los logs pasados del contenedor, con el flag -f vamos a posicionarnos en la terminal donde podemos ver logs futuros además de los pasados.
+
+### **docker container prune**
+        Con este comando eliminamos todos los contenedores que están detenidos.
+        
 ### <u>Otros comandos:</u>
 ### **docker system prune**
 
