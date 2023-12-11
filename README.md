@@ -251,6 +251,7 @@ Ejemplo de Dockerfile
 
 ### **docker start**
         Podemos iniciar un contenedor terminado con todos sus cambios anteriores intactos. Podemos ver que el contenedor está iniciado con el comando docker ps
+        Podemos iniciar un contenedor con el flag -a, el cual iniciará en modo adjunto, lo cual veremos logs del contenedor.
         
 ### **docker attach**       
         Con docker attach nos podemos adjuntar al contenedor y todos los comandos recíbidos en el se van a motrar en pantalla.
